@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --border: 220 13% 91%; /* Example value, adjust as needed */
+    /* ... other custom properties ... */
+  }
+
+  /* ... other styles ... */
+}
+
+/* If you need a custom border class, define it like this: */
+@layer utilities {
+  .border-custom {
+    border-color: hsl(var(--border));
+  }
+}
+
+/* Then use .border-custom instead of border-border in your HTML */

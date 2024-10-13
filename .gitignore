@@ -1,0 +1,24 @@
+# .gitignore
+
+# API keys
+.env
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Node.js
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# Logs
+*.log
+
+# IDE/Editor
+.vscode/
+.idea/
+
