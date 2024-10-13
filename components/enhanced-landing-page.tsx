@@ -11,7 +11,8 @@ import { motion } from "framer-motion"
 import RetroGrid from "@/components/ui/retro-grid";
 import { Spotlight } from "@/components/ui/spotlight";
 
-export function EnhancedLandingPageComponent() {
+export const EnhancedLandingPageComponent = ({ windowWidth }: { windowWidth: number }) => {
+  const isMobile = windowWidth < 768;
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const reviews = [
@@ -99,27 +100,28 @@ const ReviewCard = ({
   }, [])
 
   return (
-    
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div className="landing-page">
       <header className={`px-4 lg:px-6 h-16 flex items-center fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-md' : ''}`}>
-        <Link className="flex items-center justify-center" href="#">
-          <Pizza className="h-6 w-6 mr-2 text-primary" />
-          <span className="font-bold text-xl">LeftoverLuxe</span>
-        </Link>
-        <nav className="ml-auto hidden md:flex gap-4 sm:gap-6">
-          <Link className="text-sm font-medium hover:text-primary transition-colors" href="#how-it-works">
-            How It Works
+        <div className="container mx-auto flex justify-between items-center">
+          <Link className="flex items-center justify-center" href="#">
+            <Pizza className="h-6 w-6 mr-2 text-primary" />
+            <span className="font-bold text-xl">LeftoverLuxe</span>
           </Link>
-          <Link className="text-sm font-medium hover:text-primary transition-colors" href="#menu">
-            Menu
-          </Link>
-          <Link className="text-sm font-medium hover:text-primary transition-colors" href="#contact">
-            Contact
-          </Link>
-        </nav>
-        <Button className="ml-4" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </Button>
+          <nav className="hidden md:flex gap-4 sm:gap-6">
+            <Link className="text-sm font-medium hover:text-primary transition-colors" href="#how-it-works">
+              How It Works
+            </Link>
+            <Link className="text-sm font-medium hover:text-primary transition-colors" href="#menu">
+              Menu
+            </Link>
+            <Link className="text-sm font-medium hover:text-primary transition-colors" href="#contact">
+              Contact
+            </Link>
+          </nav>
+          <Button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
+        </div>
       </header>
       {mobileMenuOpen && (
         <motion.div
@@ -151,7 +153,7 @@ const ReviewCard = ({
               className="flex flex-col items-center space-y-4 text-center"
             >
               <div className="space-y-2">
-              <div className="relative flex h-[500px] w-[1000px] flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
+              <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
       <span className="pointer-events-none z-10 whitespace-pre-wrap bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-center text-7xl font-bold leading-none tracking-tighter text-transparent">
        Food Delivered Economically
       </span>
@@ -289,6 +291,47 @@ const ReviewCard = ({
           </div>
         </div>
       </footer>
+      <style jsx>{`
+        .landing-page {
+          text-align: center;
+          padding: 20px;
+        }
+        .main-title {
+          font-size: ${isMobile ? '2rem' : '3rem'};
+          line-height: 1.2;
+          margin-bottom: 10px;
+        }
+        .subtitle {
+          font-size: ${isMobile ? '1rem' : '1.2rem'};
+          line-height: 1.5;
+          margin-bottom: 20px;
+        }
+        .button-container {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+        .order-button, .learn-more-button {
+          padding: 10px 20px;
+          font-size: 1rem;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        .order-button {
+          background-color: #8a2be2;
+          color: white;
+        }
+        .learn-more-button {
+          background-color: #f8f8f8;
+          color: #333;
+        }
+        .why-choose {
+          font-size: ${isMobile ? '1.5rem' : '2rem'};
+          margin-top: 30px;
+        }
+      `}</style>
     </div>
   )
 }
