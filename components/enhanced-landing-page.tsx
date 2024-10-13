@@ -144,7 +144,7 @@ const ReviewCard = ({
         </motion.div>
       )}
       <main className="flex-1 pt-16">
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 px-4 bg-gradient-to-r from-purple-50 via-pink-50 to-red-50 dark:from-purple-900 dark:via-pink-900 dark:to-red-900">
+        <section className="hero-section">
           <div className="container mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -330,6 +330,32 @@ const ReviewCard = ({
         .why-choose {
           font-size: ${isMobile ? '1.5rem' : '2rem'};
           margin-top: 30px;
+        }
+        .hero-section {
+          background-image: url('/img.png');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          width: 100%;
+          padding: 3rem 1rem;
+        }
+
+        @media (min-width: 768px) {
+          .hero-section {
+            padding: 6rem 1rem;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .hero-section {
+            padding: 8rem 1rem;
+          }
+        }
+
+        @media (min-width: 1280px) {
+          .hero-section {
+            padding: 12rem 1rem;
+          }
         }
       `}</style>
     </div>

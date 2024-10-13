@@ -727,9 +727,6 @@ video {
 .ml-2 {
   margin-left: 0.5rem;
 }
-.ml-4 {
-  margin-left: 1rem;
-}
 .ml-auto {
   margin-left: auto;
 }
@@ -860,9 +857,6 @@ video {
 .min-h-\[80px\] {
   min-height: 80px;
 }
-.min-h-screen {
-  min-height: 100vh;
-}
 .w-0 {
   width: 0px;
 }
@@ -922,9 +916,6 @@ video {
 }
 .w-9 {
   width: 2.25rem;
-}
-.w-\[1000px\] {
-  width: 1000px;
 }
 .w-\[100px\] {
   width: 100px;
@@ -1325,11 +1316,6 @@ video {
   --tw-gradient-to: rgb(255 211 25 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
-.from-gray-50 {
-  --tw-gradient-from: #f9fafb var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(249 250 251 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
 .from-purple-50 {
   --tw-gradient-from: #faf5ff var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(250 245 255 / 0) var(--tw-gradient-to-position);
@@ -1365,14 +1351,20 @@ video {
 .to-transparent {
   --tw-gradient-to: transparent var(--tw-gradient-to-position);
 }
-.to-white {
-  --tw-gradient-to: #fff var(--tw-gradient-to-position);
-}
 .to-90\% {
   --tw-gradient-to-position: 90%;
 }
+.bg-cover {
+  background-size: cover;
+}
 .bg-clip-text {
   background-clip: text;
+}
+.bg-center {
+  background-position: center;
+}
+.bg-no-repeat {
+  background-repeat: no-repeat;
 }
 .fill-current {
   fill: currentColor;
@@ -1784,6 +1776,14 @@ video {
 /* If you need a custom border class, define it like this: */
 
 /* Then use .border-custom instead of border-border in your HTML */
+
+.main-container {
+  background-image: url('/app/img.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh; /* This ensures the background covers the full viewport height */
+}
 
 .file\:border-0::file-selector-button {
   border-width: 0px;
@@ -2378,12 +2378,6 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.dark\:from-gray-900:is(.dark *) {
-  --tw-gradient-from: #111827 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(17 24 39 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
 .dark\:from-purple-900:is(.dark *) {
   --tw-gradient-from: #581c87 var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(88 28 135 / 0) var(--tw-gradient-to-position);
@@ -2393,10 +2387,6 @@ video {
 .dark\:via-pink-900:is(.dark *) {
   --tw-gradient-to: rgb(131 24 67 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), #831843 var(--tw-gradient-via-position), var(--tw-gradient-to);
-}
-
-.dark\:to-gray-800:is(.dark *) {
-  --tw-gradient-to: #1f2937 var(--tw-gradient-to-position);
 }
 
 .dark\:to-red-900:is(.dark *) {
@@ -2772,3 +2762,4 @@ video {
 .\[\&_tr\]\:border-b tr {
   border-bottom-width: 1px;
 }
+

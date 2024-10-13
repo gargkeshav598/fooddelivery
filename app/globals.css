@@ -19,3 +19,11 @@
 }
 
 /* Then use .border-custom instead of border-border in your HTML */
+
+.main-container {
+  background-image: url('/app/img.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh; /* This ensures the background covers the full viewport height */
+}
