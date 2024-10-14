@@ -1,7 +1,7 @@
 'use client'
 import { cn } from "@/lib/utils";
 import Marquee from "@/components/ui/marquee";
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -90,6 +90,11 @@ const ReviewCard = ({
   );
 };
 
+  const footerRef = useRef<HTMLElement>(null)
+
+  const scrollToBottom = () => {
+    footerRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -165,7 +170,11 @@ const ReviewCard = ({
                 </p>
               </div>
               <div className="space-x-4">
-                <Button size="lg" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white">
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+                  onClick={scrollToBottom}
+                >
                   Join Now!
                 </Button>
                 <Button size="lg" variant="outline" className="border-purple-600 text-purple-600 hover:bg-purple-50 dark:border-purple-400 dark:text-purple-400 dark:hover:bg-purple-900">
@@ -267,7 +276,7 @@ const ReviewCard = ({
           </div>
         </section>
       </main>
-      <footer className="w-full py-6 bg-gray-100 dark:bg-gray-800">
+      <footer ref={footerRef} className="w-full py-6 bg-gray-100 dark:bg-gray-800">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-4">
