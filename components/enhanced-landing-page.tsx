@@ -1,7 +1,7 @@
 'use client'
 import { cn } from "@/lib/utils";
 import Marquee from "@/components/ui/marquee";
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -9,12 +9,17 @@ import { Pizza, DollarSign, Truck, ThumbsUp, ArrowRight, Menu, X } from "lucide-
 import Link from "next/link"
 import { motion } from "framer-motion"
 import RetroGrid from "@/components/ui/retro-grid";
-import { Spotlight } from "@/components/ui/spotlight";
+import { useNavigate } from 'react-router-dom';
 
 export const EnhancedLandingPageComponent = ({ windowWidth }: { windowWidth: number }) => {
   const isMobile = windowWidth < 768;
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const navigate = useNavigate();
+  const handleRedirect = () => {
+    navigate('/order');
+  };
+
   const reviews = [
     {
       name: "Jack",
@@ -90,11 +95,6 @@ const ReviewCard = ({
   );
 };
 
-  const footerRef = useRef<HTMLElement>(null)
-
-  const scrollToBottom = () => {
-    footerRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -110,7 +110,7 @@ const ReviewCard = ({
         <div className="container mx-auto flex justify-between items-center">
           <Link className="flex items-center justify-center" href="#">
             <Pizza className="h-6 w-6 mr-2 text-primary" />
-            <span className="font-bold text-xl">RecipeNest</span>
+            <span className="font-bold text-xl">LeftoverLuxe</span>
           </Link>
           <nav className="hidden md:flex gap-4 sm:gap-6">
             <Link className="text-sm font-medium hover:text-primary transition-colors" href="#how-it-works">
@@ -160,22 +160,18 @@ const ReviewCard = ({
               <div className="space-y-2">
               <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
       <span className="pointer-events-none z-10 whitespace-pre-wrap bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-center text-7xl font-bold leading-none tracking-tighter text-transparent">
-       Delicious Recipie<br></br>Hub
+       Food Delivered Economically
       </span>
  
       <RetroGrid />
     </div>
                 <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                  Discover,Create,Savour:Your Ultimate Food Journey Awaits!
+                  Enjoy gourmet party food at a fraction of the cost. Sustainable, affordable, and oh-so-tasty!
                 </p>
               </div>
               <div className="space-x-4">
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
-                  onClick={scrollToBottom}
-                >
-                  Join Now!
+                <Button onClick={handleRedirect} size="lg" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white">
+                  Order Now
                 </Button>
                 <Button size="lg" variant="outline" className="border-purple-600 text-purple-600 hover:bg-purple-50 dark:border-purple-400 dark:text-purple-400 dark:hover:bg-purple-900">
                   Learn More
@@ -186,12 +182,12 @@ const ReviewCard = ({
         </section>
         <section id="how-it-works" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container mx-auto px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">Why Choose RecipeNest?</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">Why Choose LeftoverLuxe?</h2>
             <div className="grid gap-6 items-center md:grid-cols-3">
               {[
-                { icon: DollarSign, title: "Zero Cost Cuisine!", description: "Enjoy high-quality food recipe for absolutely free." },
-                { icon: Truck, title: "Weekly Delivery", description: "Your Weekly Update Awaits:Discover What's New!" },
-                { icon: ThumbsUp, title: "Guilt-Free Options Avaliable!", description: "Diet Specific Sections for the health conscious people too!" }
+                { icon: DollarSign, title: "Budget-Friendly", description: "Enjoy high-quality food at a fraction of the original price." },
+                { icon: Truck, title: "Fast Delivery", description: "Get your food delivered quickly while it's still fresh and delicious." },
+                { icon: ThumbsUp, title: "Eco-Friendly", description: "Reduce food waste and support sustainable consumption." }
               ].map((feature, index) => (
                 <motion.div key={index} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Card className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-lg border-none shadow-lg">
@@ -213,9 +209,9 @@ const ReviewCard = ({
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">How It Works</h2>
             <div className="grid gap-6 items-center md:grid-cols-3">
               {[
-                { step: 1, title: "Register With Your Email!", description: "Wont spam you for sure!" },
-                { step: 2, title: "Get Tasty Recipes In Your Inbox", description: "New and delicious recipes everyweek!" },
-                { step: 3, title: "Enjoy!", description: "." }
+                { step: 1, title: "Browse Menu", description: "Check out our daily selection of leftover party food." },
+                { step: 2, title: "Place Order", description: "Select your favorites and add them to your cart." },
+                { step: 3, title: "Enjoy!", description: "Receive your delicious, budget-friendly meal." }
               ].map((step, index) => (
                 <motion.div
                   key={index}
@@ -257,7 +253,7 @@ const ReviewCard = ({
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Ready to Indulge?</h2>
                 <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
-                  Join RecipeNest today and start enjoying gourmet recipes at zero cost!
+                  Join LeftoverLuxe today and start enjoying gourmet meals at amazing prices!
                 </p>
               </div>
               <div className="w-full max-w-sm space-y-2">
@@ -276,12 +272,12 @@ const ReviewCard = ({
           </div>
         </section>
       </main>
-      <footer ref={footerRef} className="w-full py-6 bg-gray-100 dark:bg-gray-800">
+      <footer className="w-full py-6 bg-gray-100 dark:bg-gray-800">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-4">
               <Pizza className="h-6 w-6 text-primary" />
-              <span className="font-bold">RecipeNest</span>
+              <span className="font-bold">LeftoverLuxe</span>
             </div>
             <nav className="flex gap-4 sm:gap-6 mt-4 md:mt-0">
               <Link className="text-sm hover:underline underline-offset-4" href="#">
@@ -296,7 +292,7 @@ const ReviewCard = ({
             </nav>
           </div>
           <div className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
-            © 2024 RecipeNest. All rights reserved.
+            © 2024 LeftoverLuxe. All rights reserved.
           </div>
         </div>
       </footer>
